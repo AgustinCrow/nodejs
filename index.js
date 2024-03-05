@@ -1,12 +1,19 @@
-const http = require('http');
-const PORT = 3000;
+import app from "./app.js"
+import {sequelize} from './database/config.js';
+import {PORT} from './config.js'
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World!');
-});
 
-server.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}/`);
-});
+
+const server=async(port)=>{
+    try{
+        app.listen(port, () =>{
+            console.log(`listening port ${port} `)
+        })
+         await sequelize.sync({force: false})
+        console.log("Server is open")
+    }catch(error){
+        console.log(error)
+    }
+};
+
+server(PORT)

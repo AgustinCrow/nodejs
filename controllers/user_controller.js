@@ -24,8 +24,8 @@ export async function createUser(req, res){
         name,
         email
     })
-    newUser.save();
-    return res.status(200).json({"created": (newUser)})
+    res.status(200)
+    res.end("user created")
 
 }
 

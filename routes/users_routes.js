@@ -3,7 +3,7 @@ import {getUsers,createUser,updateUser,deleteUser} from '../controllers/user_con
 const userRouter = Router()
 
  userRouter.get('/',getUsers);  
- userRouter.post('/',createUser);  
+ userRouter.post('/create',createUser);  
  userRouter.put('/:id',updateUser);  
  userRouter.delete('/:id',deleteUser);  
 
